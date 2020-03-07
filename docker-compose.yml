@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  devkit:
+    build: .
+    volumes:
+      - ".:/code"
+    command: 0 make -j8
