@@ -18,23 +18,9 @@
 #include "debug.hpp"
 
 #include "service.hpp"
-#include "ldn_icommunication.hpp"
 
 namespace ams::mitm::amz {
-    Result LdnMitMService::CreateUserLocalCommunicationService(sf::Out<std::shared_ptr<ICommunicationInterface>> out) {
-        LogFormat("CreateUserLocalCommunicationService: enabled %d", static_cast<u32>(LdnConfig::getEnabled()));
-
-        if (LdnConfig::getEnabled()) {
-            auto comm = std::make_shared<ICommunicationInterface>();
-            out.SetValue(std::move(comm));
-            return 0;
-        }
-
-        return sm::mitm::ResultShouldForwardToSession();
-    }
-    Result LdnMitMService::CreateLdnMitmConfigService(sf::Out<std::shared_ptr<LdnConfig>> out) {
-        out.SetValue(std::move(std::make_shared<LdnConfig>()));
-
-        return 0;
+    Result SetMitMService::GetT() {
+        return ResultSuccess();
     }
 }

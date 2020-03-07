@@ -14,7 +14,7 @@ VERSION := $(VERSION)-$(GITREV)
 endif
 
 APP_AUTHOR  :=  spacemeowx2
-APP_TITLE   :=  ldnmitm cfg
+APP_TITLE   :=  amzmitm cfg
 APP_VERSION :=  $(VERSION)
 
 TARGET		:=	$(notdir $(CURDIR))

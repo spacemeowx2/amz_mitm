@@ -22,6 +22,7 @@
 #include <switch.h>
 #include <stratosphere.hpp>
 
+#include "ipinfo.hpp"
 #include "service.hpp"
 
 extern "C" {
@@ -95,7 +96,7 @@ void __appExit(void) {
     fsExit();
 }
 
-struct LdnMitmManagerOptions {
+struct SetMitmManagerOptions {
     static constexpr size_t PointerBufferSize = 0x1000;
     static constexpr size_t MaxDomains = 0x10;
     static constexpr size_t MaxDomainObjects = 0x100;
@@ -106,9 +107,9 @@ int main(int argc, char **argv)
     LogFormat("main");
 
     constexpr sm::ServiceName MitmServiceName = sm::ServiceName::Encode("set:sys");
-    sf::hipc::ServerManager<2, LdnMitmManagerOptions, 3> server_manager;
+    sf::hipc::ServerManager<2, SetMitmManagerOptions, 3> server_manager;
 
-    R_ASSERT(server_manager.RegisterMitmServer<ams::mitm::amz::LdnMitMService>(MitmServiceName));
+    R_ASSERT(server_manager.RegisterMitmServer<ams::mitm::amz::SetMitMService>(MitmServiceName));
 
     server_manager.LoopProcess();
 

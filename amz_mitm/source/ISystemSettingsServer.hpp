@@ -26,12 +26,12 @@ namespace ams::mitm::amz {
                 GetT = 181,
             };
         public:
-            ICommunicationInterface() {
+            ISystemSettingsServer() {
                 LogFormat("ISystemSettingsServer");
                 /* ... */
             };
             
-            ~ICommunicationInterface() {
+            ~ISystemSettingsServer() {
                 LogFormat("~ISystemSettingsServer");
             };
         private:
